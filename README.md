@@ -10,7 +10,10 @@ Key Features
 
    Tech Stack
 Java
+
 Spring Boot
+
 Spring Mail-sender (email)
+
 Message Broker (Kafka)
 
