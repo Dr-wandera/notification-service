@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: notification-service
+
+  config:
+    import: "optional:configserver:http://localhost:8088"
+
+    #Gmail Config
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: wanderafaustine94@gmail.com
+    password: "wmxu kihd zmck jtiq"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

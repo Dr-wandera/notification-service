@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Sale Notification</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:#f4f6f8;
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width:600px;
+            margin:auto;
+            background:white;
+            border-radius:8px;
+            overflow:hidden;
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header{
+            background:#1a73e8;
+            color:white;
+            padding:20px;
+            text-align:center;
+        }
+
+        .header h2{
+            margin:0;
+        }
+
+        .content{
+            padding:25px;
+        }
+
+        .order-box{
+            background:#f9fafc;
+            padding:15px;
+            border-radius:6px;
+            margin-bottom:20px;
+        }
+
+        .customer-box{
+            background:#eef6ff;
+            padding:15px;
+            border-radius:6px;
+            margin-bottom:20px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:10px;
+        }
+
+        th{
+            background:#f1f1f1;
+            padding:10px;
+            text-align:left;
+        }
+
+        td{
+            padding:10px;
+            border-bottom:1px solid #eee;
+        }
+
+        .footer{
+            text-align:center;
+            padding:15px;
+            font-size:12px;
+            color:#777;
+            background:#fafafa;
+        }
+
+        .highlight{
+            color:#1a73e8;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>🎉 Congratulations! You Made a Sale</h2>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <p>Hello Seller,</p>
+
+        <p>You have successfully sold products on our marketplace.</p>
+
+        <!-- ORDER DETAILS -->
+        <div class="order-box">
+            <p><strong>Order Number:</strong>
+                <span class="highlight" th:text="${orderNumber}"></span>
+            </p>
+
+            <p><strong>Order Date:</strong>
+                <span th:text="${createdAt}"></span>
+            </p>
+        </div>
+
+        <!-- CUSTOMER DETAILS -->
+        <div class="customer-box">
+            <h4>Customer Contact</h4>
+
+            <p><strong>Email:</strong>
+                <span th:text="${customerEmail}"></span>
+            </p>
+
+            <p><strong>Phone:</strong>
+                <span th:text="${customerPhoneNumber}"></span>
+            </p>
+        </div>
+
+        <!-- ITEMS TABLE -->
+        <h4>Products Sold</h4>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.productName}"></td>
+                <td th:text="${item.quantity}"></td>
+                <td th:text="${item.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:20px;">
+            Please prepare the items for delivery.
+        </p>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 Your Marketplace Platform
+    </div>
+
+</div>
+
+</body>
+</html>
