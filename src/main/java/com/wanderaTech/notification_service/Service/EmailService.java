@@ -19,7 +19,7 @@ public class EmailService {
     private final TemplateEngine templateEngine;
     private final JavaMailSender mailSender;
 
-    //this method send the email to  customer of order item  placed
+    //send  email to  customer of product  purchased
     @Async
     public void sendEmailToCustomer(String to, String subject, String templateName, Map<String, Object> variables ) throws MessagingException {
 
