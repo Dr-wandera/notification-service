@@ -20,11 +20,11 @@ public class NotificationServiceImplementation  {
     private final NotificationRepository notificationRepository;
     private final EmailService emailService;
 
-    //this method process the notification to the customer of order placed
+    //  process    customer notification of order placed
     public void processCustomerNotification(OrderPlacedEvent event) {
 
         Notification notification = Notification.builder()
-                .customerId(event.getCustomerId())
+                .userId(event.getUserId())
                 .email(event.getEmail())
                 .firstName(event.getFirstName())
                 .status(NotificationStatus.PENDING)
@@ -62,7 +62,7 @@ public class NotificationServiceImplementation  {
         notificationRepository.save(notification);
     }
 
-    //this method process the notification to the seller of order placed
+    // process seller  notification   of product sold
     public void processSellerNotification(SellerNotificationEvent sellerNotificationEvent) throws MessagingException {
         //  Prepare template variables
         Map<String, Object> variables = new HashMap<>();
