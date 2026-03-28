@@ -14,13 +14,13 @@ public class NotificationEventConsumer {
 
     private final NotificationServiceImplementation notificationService;
 
-    //this listen to the order-topic to notify customer of product  item purchased
+    // listen to  order-topic to notify customer of product  item purchased
     @KafkaListener(topics = "order-topic", groupId = "notification-group")
     public void consumeOrderTopic(OrderPlacedEvent orderPlacedEvent) {
         notificationService.processCustomerNotification(orderPlacedEvent);
     }
 
-    //this listen to the order-topic to notify seller of product  item purchased
+    // listen to the sellerNotification-topic to notify seller of product  item purchased
     @KafkaListener(topics ="sellerNotification-topic", groupId = "notification-group")
     public  void consumeSellerTopic(SellerNotificationEvent sellerNotificationEvent) throws MessagingException {
         notificationService.processSellerNotification(sellerNotificationEvent);
