@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 30px;
+            color: #333;
+        }
+
+        .otp-box {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f1f1f1;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            border-radius: 6px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h2>Welcome 🎉</h2>
+    </div>
+
+    <div class="content">
+        <h3>Hello ${lastName},</h3>
+
+        <p>
+            Your registration  with E-AfricShop was successful! We're excited to have you on board.
+        </p>
+
+        <p>Please use the OTP below to activate  your account:</p>
+
+        <div class="otp-box">
+            ${otpCode}
+        </div>
+
+        <p>This OTP is valid for 5 minutes time. Don't share it with anyone.</p>
+
+        <a href="#" class="btn">Verify Account</a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Your Company. All rights reserved.</p>
+    </div>
+
+</div>
+
+</body>
+</html>
