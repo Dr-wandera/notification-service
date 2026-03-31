@@ -59,4 +59,43 @@ public class EmailService {
 
         mailSender.send(message);
     }
+
+    public void sendEmailToRegisteredUser(String to, String subject, String templateName, Map<String, Object> variables) throws MessagingException {
+        //  Prepare thymeleaf context
+        Context context= new Context();
+        context.setVariables(variables);
+
+        //  Process template
+        String htmlContent = templateEngine.process(templateName, context);
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper =
+                new MimeMessageHelper(message, true, "UTF-8");
+
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(htmlContent, true);
+
+        mailSender.send(message);
+    }
+
+    //resendOtp notification
+    public void sendResendOtpEmail(String to, String subject, String templateName, Map<String, Object> variables) throws MessagingException {
+        //  Prepare thymeleaf context
+        Context context= new Context();
+        context.setVariables(variables);
+
+        //  Process template
+        String htmlContent = templateEngine.process(templateName, context);
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper =
+                new MimeMessageHelper(message, true, "UTF-8");
+
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(htmlContent, true);
+
+        mailSender.send(message);
+    }
 }
