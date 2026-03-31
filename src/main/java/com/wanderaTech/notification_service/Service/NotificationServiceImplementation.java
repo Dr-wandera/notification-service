@@ -2,6 +2,7 @@ package com.wanderaTech.notification_service.Service;
 
 import com.wanderaTech.common_events.NotificationEvent.OrderPlacedEvent;
 import com.wanderaTech.common_events.NotificationEvent.SellerNotificationEvent;
+import com.wanderaTech.common_events.RegistrationEvent.RegisterNotificationEvent;
 import com.wanderaTech.notification_service.Enum.NotificationStatus;
 import com.wanderaTech.notification_service.Model.Notification;
 import com.wanderaTech.notification_service.Repository.NotificationRepository;
@@ -78,6 +79,40 @@ public class NotificationServiceImplementation  {
                 sellerNotificationEvent.getSellerEmail(),
                 "You made a sale",
                 "seller-notification.html",
+                variables
+        );
+    }
+
+    //process  registered user notification
+    public void processUserRegisteredNotification(RegisterNotificationEvent registerNotificationEvent) throws MessagingException {
+        //  Prepare template variables
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("lastName", registerNotificationEvent.getLastName());
+        variables.put("otpCode", registerNotificationEvent.getOtpCode());
+
+
+
+        emailService.sendEmailToRegisteredUser(
+                registerNotificationEvent.getEmail(),
+                "You have registered successful",
+                "User-notification.html",
+                variables
+        );
+    }
+
+    //process resend otp
+    public void processResendOtp(RegisterNotificationEvent registerNotificationEvent) throws MessagingException {
+        //  Prepare template variables
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("lastName", registerNotificationEvent.getLastName());
+        variables.put("items", registerNotificationEvent.getOtpCode());
+
+
+
+        emailService.sendResendOtpEmail(
+                registerNotificationEvent.getEmail(),
+                "You have registered successful",
+                "ResendOtp-notification.html",
                 variables
         );
     }
