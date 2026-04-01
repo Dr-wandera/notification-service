@@ -90,8 +90,6 @@ public class NotificationServiceImplementation  {
         variables.put("lastName", registerNotificationEvent.getLastName());
         variables.put("otpCode", registerNotificationEvent.getOtpCode());
 
-
-
         emailService.sendEmailToRegisteredUser(
                 registerNotificationEvent.getEmail(),
                 "You have registered successful",
