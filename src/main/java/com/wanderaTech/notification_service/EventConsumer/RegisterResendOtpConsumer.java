@@ -1,6 +1,7 @@
 package com.wanderaTech.notification_service.EventConsumer;
 
 import com.wanderaTech.common_events.RegistrationEvent.RegisterNotificationEvent;
+import com.wanderaTech.common_events.RegistrationEvent.RegistrationOtpResendEvent;
 import com.wanderaTech.notification_service.Service.NotificationServiceImplementation;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class RegisterResendOtpConsumer {
 
     // listen to  register-topic to give otp for account activation
     @KafkaListener(topics = "resendOtp-topic", groupId = "notification-group")
-    public void consumeResendTopic(RegisterNotificationEvent registerNotificationEvent) throws MessagingException {
-        notificationService.processResendOtp(registerNotificationEvent);
+    public void consumeResendTopic(RegistrationOtpResendEvent registrationOtpResendEvent) throws MessagingException {
+        notificationService.processResendOtp(registrationOtpResendEvent);
     }
 }
