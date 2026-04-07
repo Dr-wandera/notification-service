@@ -3,6 +3,7 @@ package com.wanderaTech.notification_service.Service;
 import com.wanderaTech.common_events.NotificationEvent.OrderPlacedEvent;
 import com.wanderaTech.common_events.NotificationEvent.SellerNotificationEvent;
 import com.wanderaTech.common_events.RegistrationEvent.RegisterNotificationEvent;
+import com.wanderaTech.common_events.RegistrationEvent.RegistrationOtpResendEvent;
 import com.wanderaTech.notification_service.Enum.NotificationStatus;
 import com.wanderaTech.notification_service.Model.Notification;
 import com.wanderaTech.notification_service.Repository.NotificationRepository;
@@ -67,7 +68,7 @@ public class NotificationServiceImplementation  {
     public void processSellerNotification(SellerNotificationEvent sellerNotificationEvent) throws MessagingException {
         //  Prepare template variables
         Map<String, Object> variables = new HashMap<>();
-        variables.put("sellerId", sellerNotificationEvent.getSellerId());
+        variables.put("sellerId", sellerNotificationEvent.getUserId());
         variables.put("orderNumber", sellerNotificationEvent.getOrderNumber());
         variables.put("items", sellerNotificationEvent.getItems());
         variables.put("createdAt", sellerNotificationEvent.getCreatedAt());
@@ -99,16 +100,16 @@ public class NotificationServiceImplementation  {
     }
 
     //process resend otp
-    public void processResendOtp(RegisterNotificationEvent registerNotificationEvent) throws MessagingException {
+    public void processResendOtp(RegistrationOtpResendEvent registrationOtpResendEvent) throws MessagingException {
         //  Prepare template variables
         Map<String, Object> variables = new HashMap<>();
-        variables.put("lastName", registerNotificationEvent.getLastName());
-        variables.put("items", registerNotificationEvent.getOtpCode());
+        variables.put("lastName", registrationOtpResendEvent.getLastName());
+        variables.put("otpCode", registrationOtpResendEvent.getOtpCode());
 
 
 
         emailService.sendResendOtpEmail(
-                registerNotificationEvent.getEmail(),
+                registrationOtpResendEvent.getEmail(),
                 "You have registered successful",
                 "ResendOtp-notification.html",
                 variables
