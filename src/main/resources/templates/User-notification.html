@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
         }
 
         .overlay {
-            background-color: rgba(0,0,0,0.6);
+            background-color: #ffffff;
             padding: 40px 0;
         }
 
@@ -80,7 +81,7 @@
         </div>
 
         <div class="content">
-            <h3>Hello ${lastName},</h3>
+            <h3>Hello <span th:text="${lastName}"></span>,</h3>
 
             <p>
                 Your registration with E-AfricShop was successful! We're excited to have you on board.
@@ -89,7 +90,7 @@
             <p>Please use the OTP below to activate your account:</p>
 
             <div class="otp-box">
-                ${otpCode}
+                <span th:text="${otpCode}"></span>
             </div>
 
             <p>This OTP is valid for 5 minutes time. Don't share it with anyone.</p>
@@ -98,7 +99,14 @@
         </div>
 
         <div class="footer">
-            <p>&copy; 2026 E-AfricShop. All rights reserved.</p>
+            <p style="color: blue;">&copy; 2026 E-AfricShop. All rights reserved.</p>            <p>prepared by Wandera</p>
+        </div>
+
+        <div style="text-align: center;">
+            <img src="images/facebook.png" alt="Facebook" width="30">
+            <img src="images/instagram.png" alt="Instagram" width="30">
+            <img src="images/x.png" alt="X" width="30">
+            <img src="images/youtube.png" alt="YouTube" width="30">
         </div>
 
     </div>
