@@ -3,166 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <title>New Sale Notification</title>
-
-    <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-color:#f4f6f8;
-            margin:0;
-            padding:0;
-        }
-
-        .container{
-            width:600px;
-            margin:auto;
-            background:white;
-            border-radius:8px;
-            overflow:hidden;
-            box-shadow:0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header{
-            background:#1a73e8;
-            color:white;
-            padding:20px;
-            text-align:center;
-        }
-
-        .header h2{
-            margin:0;
-        }
-
-        .content{
-            padding:25px;
-        }
-
-        .order-box{
-            background:#f9fafc;
-            padding:15px;
-            border-radius:6px;
-            margin-bottom:20px;
-        }
-
-        .customer-box{
-            background:#eef6ff;
-            padding:15px;
-            border-radius:6px;
-            margin-bottom:20px;
-        }
-
-        table{
-            width:100%;
-            border-collapse:collapse;
-            margin-top:10px;
-        }
-
-        th{
-            background:#f1f1f1;
-            padding:10px;
-            text-align:left;
-        }
-
-        td{
-            padding:10px;
-            border-bottom:1px solid #eee;
-        }
-
-        .footer{
-            text-align:center;
-            padding:15px;
-            font-size:12px;
-            color:#777;
-            background:#fafafa;
-        }
-
-        .highlight{
-            color:#1a73e8;
-            font-weight:bold;
-        }
-    </style>
 </head>
 
-<body>
+<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif;">
 
-<div class="container">
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:20px; background-color:#f4f6f8;">
+    <tr>
+        <td align="center">
 
-    <!-- HEADER -->
-    <div class="header">
-        <h2>🎉 Congratulations! You Made a Sale</h2>
-    </div>
+            <!-- MAIN CONTAINER -->
+            <table width="600" cellpadding="0" cellspacing="0"
+                   style="background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
 
-    <!-- CONTENT -->
-    <div class="content">
+                <!-- HEADER -->
+                <tr>
+                    <td style="background:#1a73e8; color:#ffffff; padding:20px; text-align:center;">
+                        <h2 style="margin:0;">🎉 Congratulations! You Made a Sale</h2>
+                    </td>
+                </tr>
 
-        <p>Hello Seller,</p>
+                <!-- CONTENT -->
+                <tr>
+                    <td style="padding:25px; color:#333333;">
 
-        <p>You have successfully sold products on our marketplace.</p>
+                        <p>Hello Seller,</p>
 
-        <!-- ORDER DETAILS -->
-        <div class="order-box">
-            <p><strong>Order Number:</strong>
-                <span class="highlight" th:text="${orderNumber}"></span>
-            </p>
+                        <p>You have successfully sold products on our marketplace.</p>
 
-            <p><strong>Order Date:</strong>
-                <span th:text="${createdAt}"></span>
-            </p>
-        </div>
+                        <!-- ORDER DETAILS -->
+                        <div style="background:#f9fafc; padding:15px; border-radius:6px; margin-bottom:20px;">
+                            <p><strong>Order Number:</strong>
+                                <span style="color:#1a73e8; font-weight:bold;"
+                                      th:text="${orderNumber}"></span>
+                            </p>
 
-        <!-- CUSTOMER DETAILS -->
-        <div class="customer-box">
-            <h4>Customer Contact</h4>
+                            <p><strong>Order Date:</strong>
+                                <span th:text="${createdAt}"></span>
+                            </p>
+                        </div>
 
-            <p><strong>Email:</strong>
-                <span th:text="${customerEmail}"></span>
-            </p>
+                        <!-- CUSTOMER DETAILS -->
+                        <div style="background:#eef6ff; padding:15px; border-radius:6px; margin-bottom:20px;">
+                            <h4>Customer Contact</h4>
 
-            <p><strong>Phone:</strong>
-                <span th:text="${customerPhoneNumber}"></span>
-            </p>
-        </div>
+                            <p><strong>Email:</strong>
+                                <span th:text="${customerEmail}"></span>
+                            </p>
 
-        <!-- ITEMS TABLE -->
-        <h4>Products Sold</h4>
+                            <p><strong>Phone:</strong>
+                                <span th:text="${customerPhoneNumber}"></span>
+                            </p>
+                        </div>
 
-        <table>
-            <thead>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-            </thead>
+                        <!-- ITEMS TABLE -->
+                        <h4>Products Sold</h4>
 
-            <tbody>
-            <tr th:each="item : ${items}">
-                <td th:text="${item.productName}"></td>
-                <td th:text="${item.quantity}"></td>
-                <td th:text="${item.price}"></td>
-            </tr>
-            </tbody>
-        </table>
+                        <table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse;">
+                            <thead>
+                            <tr style="background:#f1f1f1;">
+                                <th align="left">Product</th>
+                                <th align="center">Quantity</th>
+                                <th align="right">Price</th>
+                            </tr>
+                            </thead>
 
-        <p style="margin-top:20px;">
-            Please prepare the items for delivery.
-        </p>
+                            <tbody>
+                            <tr th:each="item : ${items}">
+                                <td th:text="${item.productName}"></td>
+                                <td align="center" th:text="${item.quantity}"></td>
+                                <td align="right" th:text="${item.price}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-    </div>
+                        <p style="margin-top:20px;">
+                            Please prepare the items for delivery.
+                        </p>
 
-    <!-- FOOTER -->
-    <div class="footer">
-        © 2026 Your Marketplace Platform
-    </div>
+                        <!-- 🔥 FOLLOW US -->
+                        <hr style="margin:30px 0;"/>
 
+                        <p style="text-align:center;">Follow us:</p>
 
-    <div style="text-align: center;">
-        <img src="Logos/Logos/facebook.png" alt="Facebook" width="30">
-        <img src="Logos/Logos/instagram.png" alt="Instagram" width="30">
-        <img src="Logos/Logos/x.png" alt="X" width="30">
-        <img src="Logos/Logos/youtube.png" alt="YouTube" width="30">
-    </div>
+                        <table align="center" cellpadding="10">
+                            <tr>
+                                <td>
+                                    <a href="https://facebook.com">
+                                        <img th:src="'cid:facebookLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://instagram.com">
+                                        <img th:src="'cid:instagramLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://x.com">
+                                        <img th:src="'cid:xLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://youtube.com">
+                                        <img th:src="'cid:youtubeLogo'" width="30"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
 
-</div>
+                    </td>
+                </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td style="text-align:center; padding:15px; font-size:12px; color:#777; background:#fafafa;">
+                        © 2026 Your Marketplace Platform
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

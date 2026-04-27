@@ -2,116 +2,100 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Successful</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .overlay {
-            background-color: rgba(0,0,0,0.6);
-            padding: 40px 0;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 40px auto;
-            background: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .header {
-            background: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .content {
-            padding: 30px;
-            color: #333;
-        }
-
-        .otp-box {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f1f1f1;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 4px;
-            border-radius: 6px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 15px;
-            font-size: 12px;
-            color: #777;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 20px;
-            background: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-    </style>
+    <title>OTP Verification</title>
 </head>
 
-<body>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#f4f6f8;">
 
-<div class="overlay">
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:20px; background-color:#f4f6f8;">
+    <tr>
+        <td align="center">
 
-    <div class="container">
+            <!-- MAIN CONTAINER -->
+            <table width="600" cellpadding="0" cellspacing="0"
+                   style="background:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.2);">
 
-        <div class="header">
-            <h2>Welcome to E-AfricShop</h2>
-        </div>
+                <!-- HEADER -->
+                <tr>
+                    <td style="background:#4CAF50; color:#ffffff; padding:20px; text-align:center;">
+                        <h2 style="margin:0;">Welcome to E-AfricShop</h2>
+                    </td>
+                </tr>
 
-        <div class="content">
-            <h3>Hello <span th:text="${lastName}"></span>,</h3>
+                <!-- CONTENT -->
+                <tr>
+                    <td style="padding:30px; color:#333333;">
 
-            <p>
-                Your resend OTP code has been sent by E-AfricShop was successful! If you DID NOT request for it just ignore this message.
-            </p>
+                        <h3>Hello <span th:text="${lastName}"></span>,</h3>
 
-            <p>Please use the OTP below to activate your account:</p>
+                        <p>
+                            Your resend OTP request was successful. If you did NOT request this, please ignore this email.
+                        </p>
 
-            <div class="otp-box">
-                <span th:text="${otpCode}"></span>
-            </div>
+                        <p>Please use the OTP below to activate your account:</p>
 
-            <p>This OTP is valid for 5 minutes time. Don't share it with anyone.</p>
+                        <!-- OTP BOX -->
+                        <div style="margin:20px 0; padding:15px; background:#f1f1f1; text-align:center;
+                                    font-size:24px; font-weight:bold; letter-spacing:4px; border-radius:6px;">
+                            <span th:text="${otpCode}"></span>
+                        </div>
 
-            <a href="#" class="btn">Verify Account</a>
-        </div>
+                        <p>This OTP is valid for 5 minutes. Do not share it with anyone.</p>
 
-        <div class="footer">
-            <p>&copy; 2026 E-AfricShop. All rights reserved.</p>
-        </div>
+                        <!-- BUTTON -->
+                        <div style="text-align:center;">
+                            <a href="#"
+                               style="display:inline-block; margin-top:20px; padding:12px 20px;
+                                      background:#4CAF50; color:#ffffff; text-decoration:none; border-radius:5px;">
+                                Verify Account
+                            </a>
+                        </div>
 
+                        <!-- 🔥 FOLLOW US -->
+                        <hr style="margin:30px 0;"/>
 
-        <div style="text-align: center;">
-            <img src="Logos/Logos/facebook.png" alt="Facebook" width="30">
-            <img src="Logos/Logos/instagram.png" alt="Instagram" width="30">
-            <img src="Logos/Logos/x.png" alt="X" width="30">
-            <img src="Logos/Logos/youtube.png" alt="YouTube" width="30">
-        </div>
+                        <p style="text-align:center;">Follow us:</p>
 
-    </div>
+                        <table align="center" cellpadding="10">
+                            <tr>
+                                <td>
+                                    <a href="https://facebook.com">
+                                        <img th:src="'cid:facebookLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://instagram.com">
+                                        <img th:src="'cid:instagramLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://x.com">
+                                        <img th:src="'cid:xLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://youtube.com">
+                                        <img th:src="'cid:youtubeLogo'" width="30"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
 
-</div>
+                    </td>
+                </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td style="text-align:center; padding:15px; font-size:12px; color:#777;">
+                        © 2026 E-AfricShop. All rights reserved.
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

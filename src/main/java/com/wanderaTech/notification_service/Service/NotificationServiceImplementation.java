@@ -52,11 +52,13 @@ public class NotificationServiceImplementation  {
                     variables
             );
 
+            //change status to send if the email sent success
             notification.setStatus(NotificationStatus.SENT);
             notification.setSentAt(LocalDateTime.now());
 
         } catch (MessagingException e) {
 
+            //if fail to be sent set status to failed and retries 
             notification.setStatus(NotificationStatus.FAILED);
             notification.setRetryCount(notification.getRetryCount() + 1);
         }

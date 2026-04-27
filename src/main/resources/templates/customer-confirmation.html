@@ -27,13 +27,13 @@
                     <td style="padding:30px; color:#333333;">
 
                         <p style="font-size:16px;">
-                             Hello 👋 <strong th:text="${firstName}">FirstName</strong>
+                            Hello 👋 <strong th:text="${firstName}">FirstName</strong>
                         </p>
 
                         <p style="font-size:15px;">
-                            Thank you for your purchase! Your order-Number is
+                            Thank you for your purchase! Your order number is
                             <strong th:text="${orderId}">ORDER123</strong>
-                            has been placed successfully.
+                            and has been placed successfully.
                         </p>
 
                         <!-- Order Table -->
@@ -42,22 +42,17 @@
 
                             <thead>
                             <tr style="background-color:#f1f1f1;">
-                                <th align="left" style="border-bottom:1px solid #ddd;">Product</th>
-                                <th align="center" style="border-bottom:1px solid #ddd;">Quantity</th>
-                                <th align="right" style="border-bottom:1px solid #ddd;">Price</th>
+                                <th align="left">Product</th>
+                                <th align="center">Quantity</th>
+                                <th align="right">Price</th>
                             </tr>
                             </thead>
 
                             <tbody>
                             <tr th:each="item : ${items}">
-                                <td style="border-bottom:1px solid #eee;"
-                                    th:text="${item.productName}">Product Name</td>
-
-                                <td align="center" style="border-bottom:1px solid #eee;"
-                                    th:text="${item.quantity}">1</td>
-
-                                <td align="right" style="border-bottom:1px solid #eee;"
-                                    th:text="${item.price}">$0.00</td>
+                                <td th:text="${item.productName}">Product</td>
+                                <td align="center" th:text="${item.quantity}">1</td>
+                                <td align="right" th:text="${item.price}">$0.00</td>
                             </tr>
                             </tbody>
                         </table>
@@ -65,44 +60,64 @@
                         <!-- Total -->
                         <table width="100%" cellpadding="10" cellspacing="0" style="margin-top:20px;">
                             <tr>
-                                <td align="right" style="font-size:16px;">
+                                <td align="right">
                                     <strong>Total: </strong>
                                     <span th:text="${totalAmount}">$0.00</span>
                                 </td>
                             </tr>
                         </table>
 
-                        <p style="margin-top:30px; font-size:14px; color:#777;">
-                            If you have any questions, feel free to contact our support team.
+                        <p style="margin-top:20px;">
+                            If you have any questions, contact support.
                         </p>
 
-                        <p style="margin-top:20px; font-size:14px;">
-                            Thank you for shopping with us!
-                        </p>
+                        <p>Thank you for shopping with us!</p>
+
+                        <!-- 🔥 FOLLOW US -->
+                        <hr style="margin:30px 0;"/>
+
+                        <p style="text-align:center;">Follow us:</p>
+
+                        <table align="center" cellpadding="10">
+                            <tr>
+                                <td>
+                                    <a href="https://facebook.com">
+                                        <img th:src="'cid:facebookLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://instagram.com">
+                                        <img th:src="'cid:instagramLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://x.com">
+                                        <img th:src="'cid:xLogo'" width="30"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://youtube.com">
+                                        <img th:src="'cid:youtubeLogo'" width="30"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
 
                     </td>
                 </tr>
 
                 <!-- Footer -->
                 <tr>
-                    <td style="background-color:#f9f9f9; padding:15px; text-align:center; font-size:12px; color:#999;">
+                    <td style="background:#f9f9f9; text-align:center; padding:15px; font-size:12px;">
                         © 2026 Ubuntu Shop. All rights reserved.
                     </td>
                 </tr>
 
             </table>
-            <!-- End Container -->
 
         </td>
     </tr>
 </table>
-
-<div style="text-align: center;">
-    <img src="Logos/Logos/facebook.png" alt="Facebook" width="30">
-    <img src="Logos/Logos/instagram.png" alt="Instagram" width="30">
-    <img src="Logos/Logos/x.png" alt="X" width="30">
-    <img src="Logos/Logos/youtube.png" alt="YouTube" width="30">
-</div>
 
 </body>
 </html>

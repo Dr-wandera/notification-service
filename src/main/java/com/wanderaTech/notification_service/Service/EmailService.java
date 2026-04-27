@@ -4,6 +4,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -38,6 +39,9 @@ public class EmailService {
         helper.setSubject(subject);
         helper.setText(htmlContent, true);
 
+        // 5. Add inline images (LOGOS)
+        addInlineImages(helper);
+
         mailSender.send(message);
     }
 
@@ -53,11 +57,37 @@ public class EmailService {
         MimeMessageHelper helper =
                 new MimeMessageHelper(message, true, "UTF-8");
 
+        //Email send details
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlContent, true);
 
+        // 5. Add inline images (LOGOS)
+        addInlineImages(helper);
+
         mailSender.send(message);
+    }
+    // Inline Images Method (logo)
+    private void addInlineImages(MimeMessageHelper helper) throws MessagingException {
+
+        ClassPathResource facebook =
+                new ClassPathResource("static/images/facebook.png");
+
+        ClassPathResource youtube =
+                new ClassPathResource("static/images/youtube.png");
+
+        ClassPathResource x =
+                new ClassPathResource("static/images/x.png");
+
+        ClassPathResource instagram =
+                new ClassPathResource("static/images/instagram.png");
+
+        helper.addInline("facebookLogo", facebook);
+        helper.addInline("youtubeLogo", youtube);
+        helper.addInline("xLogo", x);
+        helper.addInline("instagramLogo", instagram);
+
+
     }
 
     public void sendEmailToRegisteredUser(String to, String subject, String templateName, Map<String, Object> variables) throws MessagingException {
@@ -75,6 +105,9 @@ public class EmailService {
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlContent, true);
+
+        // 5. Add inline images (LOGOS)
+        addInlineImages(helper);
 
         mailSender.send(message);
     }
@@ -95,6 +128,9 @@ public class EmailService {
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlContent, true);
+
+        // 5. Add inline images (LOGOS)
+        addInlineImages(helper);
 
         mailSender.send(message);
     }
